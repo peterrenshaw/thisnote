@@ -3,17 +3,20 @@
 import os
 import json
 from urllib.request import urlopen
+from time import gmtime, strftime
+
 
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 from font_fredoka_one import FredokaOne
 
+
 from inky import InkyPHAT
 
-
+get_dt = strftime("%Y%b%dT%H:%M +1000", gmtime())
+DT = "{}".format(get_dt).upper()
 COLOR = "red"
-#URL = "http://pi.hole/admin/api.php"
 URL = "http://127.0.0.1/admin/api.php"
 PATH = os.path.dirname(__file__)
 ID = InkyPHAT(COLOR)
@@ -39,7 +42,6 @@ try:
     print("ads ({})".format(ads))
     print("rat ({})".format(rat))
 except Error:
-   # queries = '?'
     ads = '?'
     rat = '?'
     print("Error: trouble  fetching <{}>".format(u))
@@ -56,8 +58,9 @@ print("ads ({})".format(ads))
 ratio = round(rat, 2)
 print("rat ({})".format(ratio))
 
-draw.text((20,20), str(ads), ID.BLACK, font)
-draw.text((20,50), "{}".format(ratio) + "%", ID.BLACK, font)
+draw.text((20,10), DT, ID.RED, font)
+draw.text((20,25), str(ads), ID.BLACK, font)
+draw.text((20,60), "{}".format(ratio) + "%", ID.BLACK, font)
 
 ID.set_image(img)
 ID.show()
