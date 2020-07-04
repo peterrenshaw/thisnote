@@ -1,84 +1,92 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 
-DEBUG = True
+#
+# name: report.py
+# date: 2020JUL04
+# prog: pr
+# desc: A simple pihole hack to display
+#       to show number of ADVERTS blocked
+#       and how many as % today.
+# sorc: Inspired and totally ripped off the 
+#       fantastic inky-hole 
+#       <https://github.com.cnpmjs.org/neauoire/inky-hole>
+#
 
 
 import os
 import json
-import urllib.request
+from urllib.request import urlopen
+from time import gmtime, strftime
+
+
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
+from font_fredoka_one import FredokaOne
 
 
 from inky import InkyPHAT
-from PIL import Image, ImageFont, ImageDraw
 
 
-#
-# display: show debug messages
-#
-def display(msg, is_debug=DEBUG):
-    """debug message shows if is_debug is True"""
-    is_debug: print(">>> {}".format(msg))
-
-display("starting")
-
-# set current directory
-display("set current directory")
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+DEBUG = False
+get_dt = strftime("%b%d", gmtime())
+DT = "{}".format(get_dt).upper()
+COLOR = "red"
+URL = "http://127.0.0.1/admin/api.php"
+PATH = os.path.dirname(__file__)
+ID = InkyPHAT(COLOR)
+MASK = (ID.WHITE,ID.BLACK,ID.RED)
 
 
-# load graphics
-display("load graphics")
-img = Image.open("./logo.png")
+def debug(s, is_debug=DEBUG):
+    """show the debug message if is_debug T"""
+    if s: 
+        if is_debug: print("> ".format(s))
+        else: pass
+    else:
+        pass
+
+
+#load image
+img = Image.open(os.path.join(PATH, "logo.png"))
 draw = ImageDraw.Draw(img)
 
 
-# get api data
-display("get api data")
 try:
-    f = urllib.request.urlopen("http://192.168.0.39/admin/api.php")
-    json_string = f.read()
-    parsed_json = json.loads(json_string)
-    adsblocked = parsed_json["ads_percentage_today"]
-    ratioblocked = parsed_json["ads_percentage_today"]
-    f.close()
-    display("api data ok")
-except:
-    queries = '?'
-    adsblocked = '?'
-    ratioblocked = 0
-    ratio = '?'
-    display("api data fail")
+    debug("url <{}>".format(URL))
+    data  = urlopen(URL).read()
+    js = json.loads(data)
+   
+    debug("data [{}]".format(data))
+    debug("json <{}>".format(js))
 
-#
-# inkyPHAT setup
-#
-display("inkyPHAT setup")
+    ads = js['ads_blocked_today']
+    rat = js['ads_percentage_today']
 
-font = ImageFont.truetype(os.path.join("ttf", "BebasNeue-Regular.ttf"), 32)
-inky_display = InkyPHAT("red")
-inky_display.set_border(inky_display.WHITE)
+    debug("ads ({})".format(ads))
+    debug("rat ({})".format(rat))
+except Error:
+    print("Error: trouble  fetching <{}>".format(u))
+    sys.exit(0)
 
 
-# 
-# inkyPHAT draw
-#
-display("inkyPHAT draw")
-draw.text((20, 20), str(adsblocked), inky_display.BLACK, font)
-draw.text((20, 50), str("%.1f" % round(ratioblocked, 2) + "%", inky_display.BLACK, font))
+ID.set_border(ID.WHITE)
 
-display("inkyPHAT display")
-ink_display.set_image(img)
-inky_display.show()
+
+# Load the FredokaOne font
+font = ImageFont.truetype(FredokaOne, 22)
+
+debug("ads ({})".format(ads))
+ratio = round(rat, 1)
+debug("rat ({})".format(ratio))
+
+draw.text((20,10), DT, ID.RED, font)
+draw.text((20,35), str(ads), ID.BLACK, font)
+draw.text((20,60), "{}".format(ratio) + "%", ID.BLACK, font)
+
+ID.set_image(img)
+ID.show()
 
 
 # eof
-
-
-
-
-
-
-
-
