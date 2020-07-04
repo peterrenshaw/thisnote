@@ -1,0 +1,27 @@
+
+
+ ♬ ain't singin' for miller / don't sing for bud / I won't sing for politicians / ain't singin' for spuds / this note's for you ♬
+
+
+2020JUL04
+* getting there, cleaned up
+* hacked around today 
+- done... see the code with test.py
+
+2020JUN25
+* sorc
+
+  <https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-inky-phat>
+  <https://github.com/pimoroni/inky/blob/master/library/inky/inky.py>
+  <https://github.com/neauoire/inky-hole/blob/master/main.py>
+  <https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-inky-phat>
+  <https://docs.python.org/3/howto/urllib2.html?highlight=urllib>
+  <https://pillow.readthedocs.io/en/stable/reference/ImageFont.html>
+  <https://pillow.readthedocs.io/en/stable/reference/ImageDraw.html>
+  <https://www.dafont.com/font-comment.php?file=bebas_neue>
+
+* bugs and problems galore
+- not sure why not working
+- tested against BLINKT so the GPIO pins are OK
+
+* initial checkin
