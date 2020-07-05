@@ -9,8 +9,7 @@
 
 ♬ ain't singin' for miller / don't sing for bud / I won't sing for politicians / ain't singin' for spuds / this note's for you ♬
 
-I hate ADVERTS. I hate them so much I created a RaspberryPi PiHole to suck them away. I added a nifty Pimoroni InkyPHAT to display the results. Total rip-off of the fabulous InkyHole.
-
+I hate ADVERTS. I hate them so much I created a RaspberryPi PiHole to suck them away. I added a nifty Pimoroni InkyPHAT to display the results. Total rip-off of the fabulous InkyHole: https://github.com/neauoire/inky-hole
 
 2020JUL05
 * added image to README
