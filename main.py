@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
+
+#    ________ __________  _  ______  __________
+#   /_  __/ // /  _/ __/ / |/ / __ \/_  __/ __/
+#    / / / _  // /_\ \  /    / /_/ / / / / _/  
+#   /_/ /_//_/___/___/ /_/|_/\____/ /_/ /___/  
+#
 
 
 #
@@ -29,14 +38,16 @@ from font_fredoka_one import FredokaOne
 from inky import InkyPHAT
 
 
+# Setup some globals
 DEBUG = False
-get_dt = strftime("%b%d", gmtime())
-DT = "{}".format(get_dt).upper()
 COLOR = "red"
 URL = "http://127.0.0.1/admin/api.php"
 PATH = os.path.dirname(__file__)
+
+get_dt = strftime("%b%d", gmtime())
+DT = "{}".format(get_dt).upper()
+
 ID = InkyPHAT(COLOR)
-MASK = (ID.WHITE,ID.BLACK,ID.RED)
 
 
 def debug(s, is_debug=DEBUG):
@@ -47,46 +58,51 @@ def debug(s, is_debug=DEBUG):
     else:
         pass
 
+def main():
+    """main entry point"""
+    #load image
+    img = Image.open(os.path.join(PATH, "logo.png"))
+    draw = ImageDraw.Draw(img)
 
-#load image
-img = Image.open(os.path.join(PATH, "logo.png"))
-draw = ImageDraw.Draw(img)
 
-
-try:
-    debug("url <{}>".format(URL))
-    data  = urlopen(URL).read()
-    js = json.loads(data)
+    try:
+        debug("url <{}>".format(URL))
+        data  = urlopen(URL).read()
+        js = json.loads(data)
    
-    debug("data [{}]".format(data))
-    debug("json <{}>".format(js))
+        debug("data [{}]".format(data))
+        debug("json <{}>".format(js))
 
-    ads = js['ads_blocked_today']
-    rat = js['ads_percentage_today']
+        ads = js['ads_blocked_today']
+        rat = js['ads_percentage_today']
+
+        debug("ads ({})".format(ads))
+        debug("rat ({})".format(rat))
+    except Error:
+        print("Error: trouble  fetching <{}>".format(u))
+        sys.exit(0)
+
+
+    ID.set_border(ID.WHITE)
+
+
+    # Load the FredokaOne font
+    font = ImageFont.truetype(FredokaOne, 22)
 
     debug("ads ({})".format(ads))
-    debug("rat ({})".format(rat))
-except Error:
-    print("Error: trouble  fetching <{}>".format(u))
-    sys.exit(0)
+    ratio = round(rat, 1)
+    debug("rat ({})".format(ratio))
+
+    draw.text((20,10), DT, ID.RED, font)
+    draw.text((20,35), str(ads), ID.BLACK, font)
+    draw.text((20,60), "{}".format(ratio) + "%", ID.BLACK, font)
+
+    ID.set_image(img)
+    ID.show()
 
 
-ID.set_border(ID.WHITE)
-
-
-# Load the FredokaOne font
-font = ImageFont.truetype(FredokaOne, 22)
-
-debug("ads ({})".format(ads))
-ratio = round(rat, 1)
-debug("rat ({})".format(ratio))
-
-draw.text((20,10), DT, ID.RED, font)
-draw.text((20,35), str(ads), ID.BLACK, font)
-draw.text((20,60), "{}".format(ratio) + "%", ID.BLACK, font)
-
-ID.set_image(img)
-ID.show()
+if __name__ == "__main__":
+    main()
 
 
 # eof
