@@ -37,8 +37,10 @@ from font_fredoka_one import FredokaOne
 
 from inky import InkyPHAT
 
+#
+# Setup  globals
+#
 
-# Setup some globals
 DEBUG = False
 COLOR = "red"
 URL = "http://127.0.0.1/admin/api.php"
@@ -61,7 +63,7 @@ def debug(s, is_debug=DEBUG):
 def main():
     """main entry point"""
     #load image
-    img = Image.open(os.path.join(PATH, "logo.png"))
+    img = Image.open(os.path.join(PATH, "logo-neek.png"))
     draw = ImageDraw.Draw(img)
 
 
@@ -79,7 +81,7 @@ def main():
         debug("ads ({})".format(ads))
         debug("rat ({})".format(rat))
     except Error:
-        print("Error: trouble  fetching <{}>".format(u))
+        print("Error: ♬ This note, this note is for you ♬ ...Trouble fetching <{}>".format(u))
         sys.exit(0)
 
 
