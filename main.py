@@ -63,7 +63,7 @@ def debug(s, is_debug=DEBUG):
 def main():
     """main entry point"""
     #load image
-    img = Image.open(os.path.join(PATH, "logo-neek.png"))
+    img = Image.open(os.path.join(PATH, "logoneek.png"))
     draw = ImageDraw.Draw(img)
 
 

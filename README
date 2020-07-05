@@ -11,6 +11,12 @@ I hate ADVERTS. I hate them so much I created a RaspberryPi PiHole to suck them 
 
 
 2020JUL05
+* cron added
+- update 0600, 1200, 1800 and 2300 daily
+
+  0 6,12,18,23 * * * /home/pi/work/thisnote/main.py
+
+* added new logo
 * cleaned up code
 * checked onto laptop
 
