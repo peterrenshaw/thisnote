@@ -26,7 +26,7 @@
 import os
 import json
 from urllib.request import urlopen
-from time import gmtime, strftime
+from time import localtime, strftime
 
 
 from PIL import Image
@@ -48,7 +48,7 @@ COLOR = "red"
 URL = "http://127.0.0.1/admin/api.php"
 PATH = os.path.dirname(__file__)
 
-get_dt = strftime("%b%d", gmtime())
+get_dt = strftime("%b%d", localtime())
 DT = "{}".format(get_dt).upper()
 
 ID = InkyPHAT(COLOR)

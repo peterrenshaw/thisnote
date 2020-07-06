@@ -11,6 +11,9 @@
 
 I hate ADVERTS. I hate them so much I created a RaspberryPi PiHole to suck them away. I added a nifty Pimoroni InkyPHAT to display the results. Total rip-off of the fabulous InkyHole: https://github.com/neauoire/inky-hole
 
+2020JUL07
+* using time.localtime instead of time.gmtime 
+
 2020JUL06
 * update cron timing
 - call code via cron and path to shell script
