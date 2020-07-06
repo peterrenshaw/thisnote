@@ -1,1 +1,1 @@
-0 6,12,18,23 * * * /home/pi/work/thisnote/main.py
+0 6,12,18,21 * * * /home/pi/work/thisnote/go.sh

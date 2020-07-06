@@ -37,9 +37,11 @@ from font_fredoka_one import FredokaOne
 
 from inky import InkyPHAT
 
+
 #
 # Setup  globals
 #
+
 
 DEBUG = False
 COLOR = "red"
