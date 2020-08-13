@@ -53,7 +53,7 @@ PATH = os.path.join(os.path.dirname(__file__), "img")
 NOW = dt_get_now()
 
 
-get_dt = dt_get_month_day(dt_now)
+get_dt = dt_get_month_day(NOW)
 DT = "{}".format(get_dt).upper()
 ID = InkyPHAT(COLOR)
 
