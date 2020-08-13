@@ -19,11 +19,11 @@ I hate ADVERTS. I hate them so much I created a RaspberryPi PiHole to suck them 
 - dt_get_watch: works out which watch is current
 
 
-  #    Watch  i24   24 Hour
-  #    1       0    0000 - 0600   
-  #    2       6    0600 - 1200
-  #    3      12    1200 - 2100
-  #    4      21    2100 - 0000
+    Watch       i24     24 Hour
+    1           00      0000 - 0600   
+    2           06      0600 - 1200
+    3           12      1200 - 2100
+    4           21      2100 - 0000
 
 * added images to 'img' directory.
 - call files img/fn 
