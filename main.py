@@ -77,7 +77,7 @@ def main():
     fn = "{}-watch.png".format(wn)
 
     #load current image for this watch
-    img = Image.open(os.path.join(PATH, fn)
+    img = Image.open(os.path.join(PATH, fn))
     draw = ImageDraw.Draw(img)
 
 
