@@ -39,6 +39,7 @@ from inky import InkyPHAT
 
 from tools import dt_get_now
 from tools import dt_get_hour
+from tools import dt_get_watch
 from tools import dt_get_month_day
 
 
