@@ -6,26 +6,18 @@
 
    ♬ ain't singin' for miller / don't sing for bud / I won't sing for politicians / ain't singin' for spuds / this note's for you ♬
 
-2020JUL06
-1 * prelim graphics work for datetime display
-0 * still testing
-0 * require a way to visually show timeframes
-0 - I'm thinking a Quarter watch idea
-    
-      zero full circle
-      0600 quarter circle
-      1200 half quater circle
-      1800 three quarter circle
+2020AUG12
+* testing
+- how to test watch?
 
-0 - something like this in a specific area
-
+* finish the artwork for the logos
+- one image for each watch 
 
 2020JUL05
-0 * testing cron update
-1 * cleaned code
+* cleaned code
 
 2020JUL04
-1 * add this to the cron
-1 - how many repeats?
-1 * redo the image so it shows an image
+* add this to the cron
+- how many repeats?
+* redo the image so it shows an image
 

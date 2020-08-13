@@ -26,7 +26,6 @@
 import os
 import json
 from urllib.request import urlopen
-from time import localtime, strftime
 
 
 from PIL import Image
@@ -38,19 +37,24 @@ from font_fredoka_one import FredokaOne
 from inky import InkyPHAT
 
 
+from tools import dt_get_now
+from tools import dt_get_hour
+from tools import dt_get_month_day
+
+
 #
 # Setup  globals
 #
 
-
 DEBUG = False
 COLOR = "red"
 URL = "http://127.0.0.1/admin/api.php"
-PATH = os.path.dirname(__file__)
+PATH = os.path.join(os.path.dirname(__file__), "img")
+NOW = dt_get_now()
 
-get_dt = strftime("%b%d", localtime())
+
+get_dt = dt_get_month_day(dt_now)
 DT = "{}".format(get_dt).upper()
-
 ID = InkyPHAT(COLOR)
 
 
@@ -64,8 +68,16 @@ def debug(s, is_debug=DEBUG):
 
 def main():
     """main entry point"""
-    #load image
-    img = Image.open(os.path.join(PATH, "logoneek.png"))
+
+    # determine watch
+    hour = dt_get_hour(NOW)
+    wn =dt_get_watch(hour)
+    
+    # generate image to get
+    fn = "{}-watch.png".format(wn)
+
+    #load current image for this watch
+    img = Image.open(os.path.join(PATH, fn)
     draw = ImageDraw.Draw(img)
 
 
