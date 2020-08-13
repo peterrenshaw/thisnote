@@ -52,7 +52,7 @@ COLOR = "red"
 URL = "http://127.0.0.1/admin/api.php"
 PATH = os.path.join(os.path.dirname(__file__), "img")
 NOW = dt_get_now()
-
+FN_NEEK = "logoneek.png"
 
 get_dt = dt_get_month_day(NOW)
 DT = "{}".format(get_dt).upper()
@@ -75,7 +75,7 @@ def main():
     wn =dt_get_watch(hour)
     
     # generate image to get
-    fn = "{}-watch.png".format(wn)
+    fn = "{}-{}".format(wn, FN_NEEK)
 
     #load current image for this watch
     img = Image.open(os.path.join(PATH, fn))
