@@ -77,11 +77,19 @@ def main():
     # generate image to get
     fn = "{}-{}".format(wn, FN_NEEK)
 
-    #load current image for this watch
-    img = Image.open(os.path.join(PATH, fn))
-    draw = ImageDraw.Draw(img)
+    # load current image for this watch
+    # what would be the chance of no file there?
+    try:
+        fpn = os.path.join(PATH, fn)
+        img = Image.open(fpn)
+        draw = ImageDraw.Draw(img)
+    except Error as e:
+        print("Error: loading file <{}> causing error [{}]".format(fpn, e))
+        sys.exit(1)
 
 
+    # load the information from data URL
+    # 
     try:
         debug("url <{}>".format(URL))
         data  = urlopen(URL).read()
@@ -95,9 +103,9 @@ def main():
 
         debug("ads ({})".format(ads))
         debug("rat ({})".format(rat))
-    except Error:
-        print("Error: ♬ This note, this note is for you ♬ ...Trouble fetching <{}>".format(u))
-        sys.exit(0)
+    except Error as e:
+        print("Error: trouble fetching <{}> caused error [{}}".format(URL, e))
+        sys.exit(1)
 
 
     ID.set_border(ID.WHITE)

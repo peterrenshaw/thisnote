@@ -11,6 +11,13 @@
 
 I hate ADVERTS. I hate them so much I created a RaspberryPi PiHole to suck them away. I added a nifty Pimoroni InkyPHAT to display the results. Total rip-off of the fabulous InkyHole.
 
+2020AUG15
+* noticed exception call, no matching arg.
+- fix
+* sys.exit
+- change to 1, cause "Unix programs generally use 2 for command line syntax errors and 1 for all other kind of errors."
+
+  <https://docs.python.org/3/library/sys.html?highlight=sys.exit#module-sys>
 
 2020AUG13
 * created a new set of images showing the watch
